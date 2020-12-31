@@ -23,7 +23,6 @@ export class LocationDetailsComponent implements OnInit {
     this.locationService.getLocationById(id).subscribe(
       response => {
         this.location = response;
-        console.log(this.location);
       }
     )
   }
