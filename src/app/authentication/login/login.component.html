@@ -1,0 +1,31 @@
+<div class="login-container">
+    <div class="login-form">
+        <form [formGroup]="loginForm">
+            <div class="input-container">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" placeholder="email" formControlName="email">
+                <span class="input-error" *ngIf="formError && !loginForm.controls.email.valid">
+                    Email is required
+                </span>
+            </div>
+            <div class="input-container">
+                <label for="password">Password <span class="required">*</span></label>
+                <input [type]="passwordType" id="password" placeholder="password" formControlName="password">
+                <span class="input-error" *ngIf="formError && !loginForm.controls.password.valid">
+                    Password is required
+                </span>
+                <button class="show-password"
+                    *ngIf="!loginForm.controls.password.pristine && loginForm.controls.password.value"
+                    (click)="togglePassword()">
+                    {{passwordType === 'text' ? 'Hide' : 'Show'}}
+                </button>
+            </div>
+            <div class="submit-container">
+                <button class="btn-submit" (click)="login()">Login</button>
+                <a routerLink="/register">Register</a>
+            </div>
+        </form>
+    </div>
+
+    <div id="snackbar">{{message}}</div>
+</div>

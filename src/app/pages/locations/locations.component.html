@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-right p-2">
+                <button class="btn btn-primary" routerLink="/locationcreate">Create</button>
+            </div>
+            <div class="well">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Longitude</th>
+                            <th>Latitude</th>
+                            <th>City</th>
+                            <th>Options</th>
+                            <th style="width: 36px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let location of locations">
+                            <td><a routerLink="/locationsdetails/{{location.id}}">{{location.name}}</a></td>
+                            <td>{{location.address}}</td>
+                            <td>{{location.longitude}}</td>
+                            <td>{{location.latitude}}</td>
+                            <td>{{location.city}}</td>
+                            <td>
+                                <ul class="list-inline m-0">
+                                    <li class="list-inline-item">
+                                        <button routerLink="/locationupdate/{{location.id}}"
+                                            class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip"
+                                            data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <button class="btn btn-danger btn-sm rounded-0"
+                                            (click)="deleteLocation(location.id)" type="button" data-toggle="tooltip"
+                                            data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </li>
+                                </ul>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
